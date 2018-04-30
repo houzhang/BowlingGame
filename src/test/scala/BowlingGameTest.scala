@@ -37,6 +37,45 @@ class BowlingGameTest extends FlatSpec with BeforeAndAfter {
     assert(game.getScore() === 300)
   }
 
+  it should "return correct score for random game 1" in {
+    game.roll(5)
+    game.roll(2)
+    game.roll(3)
+    game.roll(5)
+    game.roll(5)
+    game.roll(0)
+    game.roll(4)
+    game.roll(1)
+    game.roll(9)
+    game.roll(1)
+    game.roll(5)
+    game.roll(1)
+    game.roll(7)
+    game.roll(1)
+    game.roll(10)
+    game.roll(5)
+    game.roll(2)
+    game.roll(10)
+    game.roll(10)
+    game.roll(2)
+    assert(game.getScore() === 100)
+  }
+
+  it should "return correct score for random game 2" in {
+    rollMany(18, 4)
+    rollStrike()
+    rollStrike()
+    rollStrike()
+    assert(game.getScore() === 102)
+  }
+
+  it should "return correct score for random game 3" in {
+    rollMany(18, 4)
+    rollSpare()
+    game.roll(2)
+    assert(game.getScore() === 84)
+  }
+  
   private def rollMany(n: Integer, pins: Integer):Unit = {
     for (i <- 1 to n) {
       game.roll(pins)

@@ -1,5 +1,5 @@
 case class Game() {
-  var rolls:Array[Int] = new Array[Int](20)
+  var rolls:Array[Int] = new Array[Int](21)
   var currentRoll = 0
 
   def roll(pins: Int):Unit = {
@@ -22,14 +22,13 @@ case class Game() {
         score += sumOfBallsInFrame(frameIndex)
         frameIndex += 2
       }
-
     }
     score
   }
 
   def resetGame(): Unit = {
     currentRoll = 0
-    rolls = new Array[Int](20)
+    rolls = new Array[Int](21)
   }
 
   private def isStrike(frameIndex: Int): Boolean = {
